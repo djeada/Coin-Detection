@@ -1,3 +1,69 @@
 # Coin-Detection
 
 Find and count the coins in the given image.
+
+## Installation
+
+Follow the steps:
+
+- Download this repository: 
+ 
+ ```bash 
+ git clone https://github.com/djeada/kaggle-house-prices.git
+ ```
+ 
+- Install <i>virtualenv</i> (if it's not already installed).
+- Open the terminal from the project directory and run the following commands:
+
+```bash
+virtualenv env
+source env/bin/activate
+pip install -r requirements.txt
+cd src
+python -m src.main
+```
+
+## Usage
+
+To display the help message, run the following command:
+
+```bash
+python -m src.main -h
+```
+
+The output should look like this:
+
+```
+usage: main.py [-h] [--path PATH] [--output_dir OUTPUT_DIR] [--r_min R_MIN]
+               [--r_max R_MAX] [--interactive INTERACTIVE] [--verbose VERBOSE]
+               [--image_output IMAGE_OUTPUT] [--csv_output CSV_OUTPUT]
+
+options:
+  -h, --help            show this help message and exit
+  --path PATH           Path to the image
+  --output_dir OUTPUT_DIR
+                        Path to the output directory
+  --r_min R_MIN         Minimum radius of the coins
+  --r_max R_MAX         Maximum radius of the coins
+  --interactive INTERACTIVE
+                        Interactive mode
+  --verbose VERBOSE     Verbose mode
+  --image_output IMAGE_OUTPUT
+                        Should the images be displayed
+  --csv_output CSV_OUTPUT
+                        Should the csv with coin coordinates be saved
+```
+
+For example if your image is located at '/home/user/images/image.png', has coins with radius between 20 and 30 pixels, you want to display the images and save the csv file, you can run the following command:
+
+```bash
+python -m src.main --path /home/user/images/image.png --r_min 20 --r_max 30 --image_output True --csv_output True
+```
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)

@@ -2,6 +2,8 @@
 Main module. 
 Run this file to start the program.
 """
+import sys
+sys.path.append('../src/')
 
 from src.algorithms.circles_detection import find_circles
 from src.configs.general_config import GeneralConfigFactory
