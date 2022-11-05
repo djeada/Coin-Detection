@@ -46,6 +46,7 @@ notebook_shim==0.2.2
 numpy==1.23.4
 opencv-python==4.6.0.66
 packaging==21.3
+pandas==1.5.1
 pandocfilters==1.5.0
 parso==0.8.3
 pexpect==4.8.0
@@ -61,6 +62,7 @@ Pygments==2.13.0
 pyparsing==3.0.9
 pyrsistent==0.19.2
 python-dateutil==2.8.2
+pytz==2022.6
 pyzmq==24.0.1
 qtconsole==5.4.0
 QtPy==2.2.1
