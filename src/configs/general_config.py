@@ -12,6 +12,7 @@ class GeneralConfig:
     """
     Stores the configuration parameters for the program.
     """
+
     path: Path
     output_dir: Path
     r_min: int
@@ -40,7 +41,9 @@ class GeneralConfig:
         if self.r_max < 0:
             raise ValueError(f"r_max must be greater than 0, but is {self.r_max}")
         if self.r_min > self.r_max:
-            raise ValueError(f"r_min must be smaller than r_max, but is {self.r_min} and {self.r_max} respectively")
+            raise ValueError(
+                f"r_min must be smaller than r_max, but is {self.r_min} and {self.r_max} respectively"
+            )
 
 
 class GeneralConfigFactory:

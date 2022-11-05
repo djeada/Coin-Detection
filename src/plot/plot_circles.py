@@ -1,6 +1,6 @@
-'''
+"""
 Implements functions for displaying circles found in an image.
-'''
+"""
 
 import numpy as np
 from matplotlib import pyplot as plt
