@@ -2,6 +2,16 @@
 
 Find and count the coins in the given image.
 
+## Demo
+
+Example input image:
+
+![1](https://user-images.githubusercontent.com/37275728/200141206-688cf1be-a38f-4205-b44d-977cc153b020.png)
+
+Example output image:
+
+![2](https://user-images.githubusercontent.com/37275728/200141208-d525c6ab-54b6-4df9-b697-677ed7564d52.png)
+
 ## Installation
 
 Follow the steps:
