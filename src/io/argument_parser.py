@@ -1,3 +1,6 @@
+'''
+Defines the parser for the command line arguments.
+'''
 from argparse import ArgumentParser
 from pathlib import Path
 
@@ -5,6 +8,9 @@ from src.configs.general_config import GeneralConfig
 
 
 class CoinDetectionParser(ArgumentParser):
+    """
+    Parses command line arguments.
+    """
     def __init__(self):
         super().__init__()
         self.add_argument("--path", type=str, default=Path("../resources/coin.png"))

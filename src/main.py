@@ -1,3 +1,8 @@
+"""
+Main module. 
+Run this file to start the program.
+"""
+
 from src.algorithms.circles_detection import find_circles
 from src.configs.general_config import GeneralConfigFactory
 from src.io.argument_parser import CoinDetectionParser
@@ -7,11 +12,13 @@ from src.plot.plot_circles import plot_circles
 from src.plot.plot_image_matrix import plot_image_matrix
 
 
-def main():
+def main() -> None:
+    """
+    Main function.
+    """
     parser = CoinDetectionParser()
     config = GeneralConfigFactory.create_from_parser(parser)
-
-    config.output_dir.mkdir(parents=True, exist_ok=True)
+    config.validate()
 
     # read the image
     img = read_image(config.path)
@@ -33,10 +40,11 @@ def main():
     # plot the circles
     plot_circles(img, circles, "Coins found in the image")
 
-    for circle in circles:
+    for i, circle in enumerate(circles):
         x, y, r = circle
         if config.verbose:
-            plot_image_matrix(img[y - r : y + r, x - r : x + r])
+            title = f"Coin {i}"
+            plot_image_matrix(img[y - r : y + r, x - r : x + r], title)
         if config.image_output:
             # save the image
             image = img[y - r : y + r, x - r : x + r]

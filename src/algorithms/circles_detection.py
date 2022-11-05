@@ -1,3 +1,6 @@
+"""
+Implements the circle detection algorithm.
+"""
 import cv2
 import numpy as np
 

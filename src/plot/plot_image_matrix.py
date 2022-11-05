@@ -1,3 +1,6 @@
+'''
+Implements drawing images from numpy arrays.
+'''
 import numpy as np
 from matplotlib import pyplot as plt
 

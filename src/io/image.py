@@ -1,3 +1,6 @@
+"""
+Implements reading and writing images.
+"""
 from pathlib import Path
 
 import cv2
