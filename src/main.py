@@ -1,9 +1,9 @@
 """
-Main module. 
+Main module.
 Run this file to start the program.
 """
-import sys
-sys.path.append('../src/')
+from pathlib import Path
+import logging
 
 from src.algorithms.circles_detection import find_circles
 from src.configs.general_config import GeneralConfigFactory
@@ -13,45 +13,47 @@ from src.io.image import read_image, save_image
 from src.plot.plot_circles import plot_circles
 from src.plot.plot_image_matrix import plot_image_matrix
 
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 def main() -> None:
     """
-    Main function.
+    Main function that orchestrates the detection and plotting of circles in images.
     """
     parser = CoinDetectionParser()
     config = GeneralConfigFactory.create_from_parser(parser)
     config.validate()
 
-    # read the image
+    # Read and plot the original image
     img = read_image(config.path)
-    # plot the image
-    plot_image_matrix(img, "Original image")
+    plot_image_matrix(img, "Original Image")
 
-    # find the circles
-    print("Finding circles...")
+    # Detect circles
+    logger.info("Finding circles...")
     circles = find_circles(img, config.r_min, config.r_max)
-    print(f"Found {len(circles)} circles.")
+    logger.info(f"Found {len(circles)} circles.")
 
     if config.verbose:
-        for i, circle in enumerate(circles):
-            print(f"Circle {i}: x={circle[0]}, y={circle[1]}, r={circle[2]}")
+        for i, (x, y, r) in enumerate(circles):
+            logger.info(f"Circle {i}: x={x}, y={y}, r={r}")
 
+    # Export circles to CSV if required
     if config.csv_output:
-        circles_to_csv(circles, config.output_dir / "coin_coordinates.csv")
+        csv_path = Path(config.output_dir, "coin_coordinates.csv")
+        circles_to_csv(circles, csv_path)
 
-    # plot the circles
-    plot_circles(img, circles, "Coins found in the image")
+    # Plot circles on the image
+    plot_circles(img, circles, "Coins Found in the Image")
 
-    for i, circle in enumerate(circles):
-        x, y, r = circle
+    # Process and optionally save sub-images containing each detected circle
+    for i, (x, y, r) in enumerate(circles):
+        cropped_img = img[y - r:y + r, x - r:x + r]
         if config.verbose:
-            title = f"Coin {i}"
-            plot_image_matrix(img[y - r : y + r, x - r : x + r], title)
+            plot_image_matrix(cropped_img, f"Coin {i}")
         if config.image_output:
-            # save the image
-            image = img[y - r : y + r, x - r : x + r]
-            title = config.output_dir / f"circle_{x}_{y}_{r}.png"
-            save_image(image, title)
+            save_path = Path(config.output_dir, f"circle_{x}_{y}_{r}.png")
+            save_image(cropped_img, save_path)
 
-
-main()
+if __name__ == "__main__":
+    main()
