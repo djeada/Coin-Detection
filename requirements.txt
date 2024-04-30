@@ -16,7 +16,7 @@ entrypoints==0.4
 executing==1.2.0
 fastjsonschema==2.16.2
 fonttools==4.43.0
-idna==3.4
+idna==3.7
 ipykernel==6.17.0
 ipython==8.10.0
 ipython-genutils==0.2.0
