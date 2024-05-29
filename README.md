@@ -4,38 +4,49 @@ Training and using a machine learning model locally to accurately identify and c
 
 ## Demo
 
-Example input image:
+I. Example Input Image
 
-![1](https://user-images.githubusercontent.com/37275728/200141206-688cf1be-a38f-4205-b44d-977cc153b020.png)
+![Input Image](https://user-images.githubusercontent.com/37275728/200141206-688cf1be-a38f-4205-b44d-977cc153b020.png)
 
-Example output image:
+II. Example Output Image
 
-![2](https://user-images.githubusercontent.com/37275728/200141208-d525c6ab-54b6-4df9-b697-677ed7564d52.png)
+![Output Image](https://user-images.githubusercontent.com/37275728/200141208-d525c6ab-54b6-4df9-b697-677ed7564d52.png)
 
 ## Installation
 
-Follow the steps:
+To set up the project locally, follow these steps:
 
-- Download this repository: 
- 
- ```bash 
- git clone https://github.com/djeada/kaggle-house-prices.git
- ```
- 
-- Install <i>virtualenv</i> (if it's not already installed).
-- Open the terminal from the project directory and run the following commands:
+1. **Clone the repository:**
+   
+   ```bash
+   git clone https://github.com/djeada/kaggle-house-prices.git
+   ```
 
-```bash
-virtualenv env
-source env/bin/activate
-pip install -r requirements.txt
-cd src
-python -m src.main
-```
+2. **Install virtualenv (if it's not already installed)**:
+
+   ```bash
+   pip install virtualenv
+   ```
+
+3. **Set up the virtual environment and install dependencies**:
+
+   ```bash
+   cd kaggle-house-prices
+   virtualenv env
+   source env/bin/activate
+   pip install -r requirements.txt
+   ```
+   
+4. **Run the project**:
+
+   ```bash
+   cd src
+   python -m src.main
+   ```
 
 ## Usage
 
-To display the help message, run the following command:
+To display the help message and learn about the available options, run the following command:
 
 ```bash
 python -m src.main -h
@@ -64,7 +75,9 @@ options:
                         Should the csv with coin coordinates be saved
 ```
 
-For example if your image is located at '/home/user/images/image.png', has coins with radius between 20 and 30 pixels, you want to display the images and save the csv file, you can run the following command:
+### Example Command
+
+If your image is located at '/home/user/images/image.png', and you want to specify coin radii between 20 and 30 pixels, display the images, and save the results to a CSV file, use the following command:
 
 ```bash
 python -m src.main --path /home/user/images/image.png --r_min 20 --r_max 30 --image_output True --csv_output True
