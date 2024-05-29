@@ -1,6 +1,6 @@
 # Coin-Detection
 
-Find and count the coins in the given image.
+Training and using a machine learning model locally to accurately identify and count coins in a given image. This project includes data preprocessing, model training, and evaluation to ensure precise coin detection and counting.
 
 ## Demo
 
